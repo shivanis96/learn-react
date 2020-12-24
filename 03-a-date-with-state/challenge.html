@@ -15,14 +15,26 @@
     <script type="text/babel">
       const root = document.getElementById("root");
 
-      function Counter(props) {
-        const [count, setCount] = React.useState(0);
-        const increment = () => setCount(count + 1);
-        return <button onClick={increment}>Count is {count}</button>;
+      // function Counter(props) {
+      //   const [count, setCount] = React.useState(0);
+      //   const increment = () => setCount(count + 1);
+      //   return <button onClick={increment}>Count is {count}</button>;
+      // }
+
+      function Toggle(props) {
+        const [on, setOn] = React.useState(false);
+        const toggleOn = () => setOn(!on);
+        console.log("t" + props.children);
+        return (
+          <div>
+            <button onClick={toggleOn}>Toggle</button>
+            {on ? <div>{props.children}</div> : null}
+          </div>
+        );
       }
 
       function App() {
-        return <Counter />;
+        return <Toggle>This text is hidden until the button is clicked</Toggle>;
       }
 
       ReactDOM.render(<App />, root);
